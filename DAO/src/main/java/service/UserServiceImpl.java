@@ -28,10 +28,17 @@ public class UserServiceImpl implements UserService{
     }
 
     public void addUser(User user) {
+
         usersDao.save(user);
     }
 
     public User getUser(int id) {
         verifier.userExist(usersDao, id);
         return usersDao.find(id);
-    }}
+    }
+
+    public void update(User user) {
+        usersDao.delete(user.getUserId());
+        usersDao.save(user);
+    }
+}
