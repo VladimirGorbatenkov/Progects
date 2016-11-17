@@ -30,4 +30,22 @@ public class DigitToken extends Token {
     public int getValue() {
         return value;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        DigitToken digitToken = (DigitToken) o;
+
+        return (begin == digitToken.begin &&
+                end == digitToken.end &&
+                text.equals(digitToken.text) &&
+                value == digitToken.value);
+    }
+
+    @Override
+    public int hashCode() {
+        return value;
+    }
 }

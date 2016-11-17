@@ -31,4 +31,22 @@ public class SeparatorToken extends Token {
     public String getType() {
         return type;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        SeparatorToken separatorToken = (SeparatorToken) o;
+
+        return (begin == separatorToken.begin &&
+                end == separatorToken.end &&
+                text.equals(separatorToken.text) &&
+                type.equals(separatorToken.type));
+    }
+
+    @Override
+    public int hashCode() {
+        return type != null ? type.hashCode() : 0;
+    }
 }

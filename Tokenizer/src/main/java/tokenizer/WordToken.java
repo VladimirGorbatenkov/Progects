@@ -31,4 +31,24 @@ public class WordToken extends Token {
     public boolean getIsUpperFirst() {
         return isUpperFirst;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        WordToken wordToken = (WordToken) o;
+
+        return (begin == wordToken.begin &&
+                end == wordToken.end &&
+                text.equals(wordToken.text) &&
+                isUpperFirst == wordToken.isUpperFirst);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return (isUpperFirst ? 1 : 0);
+    }
+
 }
