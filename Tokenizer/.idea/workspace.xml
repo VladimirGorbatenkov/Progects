@@ -2,32 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e43466d5-e897-4728-92fe-22bdc11e4fee" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../DAO/.idea/compiler.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../DAO/.idea/copyright/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../DAO/.idea/libraries/Maven__com_google_guava_guava_20_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../DAO/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../DAO/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../DAO/.idea/uiDesigner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../DAO/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../DAO/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../DAO/DAO.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../DAO/pom.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../DAO/src/main/java/Program.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../DAO/src/main/java/dao/UsersDao.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../DAO/src/main/java/dao/UsersDaoArrayListImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../DAO/src/main/java/dao/UsersDaoFileImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../DAO/src/main/java/factories/DaoFactory.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../DAO/src/main/java/factories/UserServiceFactory.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../DAO/src/main/java/factories/VerifierFactory.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../DAO/src/main/java/model/User.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../DAO/src/main/java/service/UserService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../DAO/src/main/java/service/UserServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../DAO/src/main/java/verify/Verifier.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../DAO/src/main/java/verify/VerifierImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/tokenizer/DigitToken.class" afterPath="$PROJECT_DIR$/target/classes/tokenizer/DigitToken.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/tokenizer/SeparatorToken.class" afterPath="$PROJECT_DIR$/target/classes/tokenizer/SeparatorToken.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/tokenizer/WordToken.class" afterPath="$PROJECT_DIR$/target/classes/tokenizer/WordToken.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../DAO/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../DAO/.idea/workspace.xml" />
     </list>
     <ignored path="Tokenizer.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -765,7 +740,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
