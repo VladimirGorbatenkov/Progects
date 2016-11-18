@@ -10,11 +10,17 @@ public class UsersDaoFileImpl implements UsersDao{
     private final String FILE_BASE_NAME = "C:\\Курсы Java\\Progect\\DAO\\src\\main\\resources\\users_base.dat";
 
     List<User> users;
+    private int maxUserId = -1;
 
     public UsersDaoFileImpl() {
         this.users = new ArrayList<User>();
         try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(FILE_BASE_NAME))){
             users = (List<User>) objectInputStream.readObject();
+            for (User currentUser : users) {
+                if (currentUser.getUserId() > maxUserId) {
+                    maxUserId = currentUser.getUserId();
+                };
+            }
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -39,7 +45,8 @@ public class UsersDaoFileImpl implements UsersDao{
         User userForSave = new User(user.getUserName(), user.getUserLogin(), user.getUserPassword());
         this.users.add(userForSave);
         //у сохраненного юзера устанавливаем userId
-        users.get(users.indexOf(userForSave)).setUserId(users.indexOf(userForSave));
+        maxUserId++;
+        users.get(users.indexOf(userForSave)).setUserId(maxUserId);
         toFile();
         return users.indexOf(userForSave);
     }
@@ -47,8 +54,13 @@ public class UsersDaoFileImpl implements UsersDao{
     public void delete(int userId) {
         try {
             if ( users.get(userId) != null) {
-                users.remove(userId);
-                toFile();
+                for (User currentUser : users) {
+                    if (currentUser.getUserId() == userId) {
+                        users.remove(users.indexOf(currentUser));
+                        toFile();
+                        return;
+                    }
+                }
             }
         }
         catch (IndexOutOfBoundsException e) {
@@ -57,15 +69,22 @@ public class UsersDaoFileImpl implements UsersDao{
     }
 
     public void update(int id, User user) {
-        delete(id);
-        save(user);
-        toFile();
+        if ( users.get(id) != null) {
+            User userForSave = new User(user.getUserName(), user.getUserLogin(), user.getUserPassword());
+            userForSave.setUserId(id);
+            User userForUpdate = users.get(id);
+            userForUpdate = userForSave;
+            toFile();
+        }
+
     }
 
     private void toFile() {
+/*
         for (User currentUser : users) {
             currentUser.setUserId(users.indexOf(currentUser));
         }
+*/
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(FILE_BASE_NAME))){
             objectOutputStream.writeObject(users);
         } catch (IOException e) {

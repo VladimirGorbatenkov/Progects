@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService{
 
     public void addUser(User user) {
 
-        usersDao.save(user);
+            usersDao.save(user);
     }
 
     public User getUser(int id) {
@@ -40,5 +40,14 @@ public class UserServiceImpl implements UserService{
     public void update(User user) {
         usersDao.delete(user.getUserId());
         usersDao.save(user);
+    }
+
+    public List<User> findAll() {
+        return usersDao.findAll();
+    }
+
+    @Override
+    public void removeUser(int id) {
+        usersDao.delete(id);
     }
 }

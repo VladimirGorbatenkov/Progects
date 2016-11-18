@@ -22,14 +22,13 @@ public class Program {
         } else {
             System.out.println("not registered");
         }
-/*
-        for (User currentUser : usersDao.findAll()) {
+
+        for (User currentUser : userService.findAll()) {
             System.out.println(currentUser);
         }
-        usersDao.delete(1);
-        for (User currentUser : usersDao.findAll()) {
+        userService.removeUser(1);
+        for (User currentUser : userService.findAll()) {
             System.out.println(currentUser);
         }
-*/
     }
 }
