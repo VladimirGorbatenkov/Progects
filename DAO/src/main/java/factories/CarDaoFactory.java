@@ -1,32 +1,30 @@
 package factories;
 
-import dao.*;
-import service.UserService;
+import dao.CarDao;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Properties;
 
-public class DaoFactory {
+public class CarDaoFactory {
     private static final String PROPERTIES_FILE_NAME = "C:\\Курсы Java\\Progect\\DAO\\src\\main\\resources\\dao.properties";
-    private static DaoFactory instance;
-    private UsersDao dao;
+    private static CarDaoFactory instance;
+    private CarDao dao;
 
     static {
-        instance = new DaoFactory();
+        instance = new CarDaoFactory();
     }
 
-    private DaoFactory() {
+    private CarDaoFactory() {
         Properties properties = new Properties();
         try {
             properties.load(new FileInputStream(PROPERTIES_FILE_NAME));
-            String daoClassName = properties.getProperty("dao.class");
+            String daoClassName = properties.getProperty("car.dao.class");
             Class daoClass = Class.forName(daoClassName);
             Constructor constructor = daoClass.getConstructor();
-            this.dao = (UsersDao) constructor.newInstance();
+            this.dao = (CarDao) constructor.newInstance();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -42,11 +40,11 @@ public class DaoFactory {
         }
     }
 
-    public static DaoFactory getInstance() {
+    public static CarDaoFactory getInstance() {
         return instance;
     }
 
-    public UsersDao getDao() {
+    public CarDao getDao() {
         return dao;
     }
 

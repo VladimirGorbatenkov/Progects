@@ -1,6 +1,6 @@
 package factories;
 
-import verify.Verifier;
+import verify.HumanVerifier;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -8,19 +8,19 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Properties;
 
-public class VerifierFactory {
+public class HumanVerifierFactory {
     private static final String PROPERTIES_FILE_NAME = "C:\\Курсы Java\\Progect\\DAO\\src\\main\\resources\\dao.properties";
-    private static VerifierFactory instance = new VerifierFactory();
-    private static Verifier verifier;
+    private static HumanVerifierFactory instance = new HumanVerifierFactory();
+    private static HumanVerifier humanVerifier;
 
-    private VerifierFactory() {
+    private HumanVerifierFactory() {
         Properties properties = new Properties();
         try {
             properties.load(new FileInputStream(PROPERTIES_FILE_NAME));
-            String verifierClassName = properties.getProperty("verifier.class");
+            String verifierClassName = properties.getProperty("humanVerifier.class");
             Class verifierClass = Class.forName(verifierClassName);
             Constructor constructor = verifierClass.getConstructor();
-            this.verifier = (Verifier) constructor.newInstance();
+            this.humanVerifier = (HumanVerifier) constructor.newInstance();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {
@@ -36,11 +36,11 @@ public class VerifierFactory {
         }
     }
 
-    public static VerifierFactory getInstance() {
+    public static HumanVerifierFactory getInstance() {
         return instance;
     }
 
-    public static Verifier getVerifier() {
-        return verifier;
+    public static HumanVerifier getHumanVerifier() {
+        return humanVerifier;
     }
 }

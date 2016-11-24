@@ -1,34 +1,74 @@
-import factories.UserServiceFactory;
-import model.User;
-import service.UserService;
+import factories.CarServiceFactory;
+import factories.HumanServiceFactory;
+import model.Car;
+import model.Human;
+import service.CarService;
+import service.HumanService;
 
 public class Program {
     public static void main(String[] args) {
-        User marsel = new User("Marsel", "marselLogin", "qwerty007");
-        User nastya = new User("Nastya", "nastyaLogin", "qwerty008");
-        User ilya = new User("Ilya", "ilyaLogin", "qwerty009");
-//        UsersDao usersDao = new UsersDaoArrayListImpl();
-//        UsersDao usersDao = new UsersDaoFileImpl();
+        Human marsel = new Human.Builder()
+                .id(0)
+                .name("Marsel")
+                .age(22)
+                .city("Kazan")
+                .build();
+        Human nastya = new Human.Builder()
+                .id(0)
+                .name("Nastya")
+                .age(20)
+                .city("Moskow")
+                .build();
+        Human ilya = new Human.Builder()
+                .id(0)
+                .name("Ilya")
+                .age(25)
+                .city("Samara")
+                .build();
 
-//        UsersDao usersDao = DaoFactory.getInstance().getDao();
-//        Verifier verifier = new VerifierImpl();
-        UserService userService = UserServiceFactory.getInstance().getUserService();
-        userService.addUser(marsel);
-        userService.addUser(nastya);
-        userService.addUser(ilya);
-//        UserService userService = new UserServiceImpl(usersDao, verifier);
-        if (userService.isRegistered("Ilya")) {
-            System.out.println("Ilya is Registered");
+        HumanService humanService = HumanServiceFactory.getInstance().getHumanService();
+        CarService carService = CarServiceFactory.getInstance().getCarService();
+/*
+        humanService.add(marsel);
+        humanService.add(nastya);
+        humanService.add(ilya);
+*/
+        for (Human currentHuman : humanService.findAll()) {
+            System.out.println(currentHuman);
+        }
+        if (humanService.isRegistered("Kolya")) {
+            System.out.println("Kolya is Registered");
         } else {
-            System.out.println("not registered");
+            System.out.println("Kolya not registered");
         }
 
-        for (User currentUser : userService.findAll()) {
-            System.out.println(currentUser);
+//        System.out.println("3-й пользователь:   " + humanService.get(3));
+
+//        humanService.remove(3);
+//        humanService.add(new Human(0, "Masha", 22, "Kirov"));
+
+        humanService.update(new Human(3, "Masha", 18, "Kirov"));
+
+        System.out.println("2-й пользователь:   " + humanService.get(2));
+
+        for (Human currentHuman : humanService.findAll()) {
+            System.out.println(currentHuman);
         }
-        userService.removeUser(1);
-        for (User currentUser : userService.findAll()) {
-            System.out.println(currentUser);
+/*        humanService.remove(1);
+        for (Human currentHuman : humanService.findAll()) {
+            System.out.println(currentHuman);
+        }*/
+
+        for (Car currentCar : carService.findAll()) {
+            System.out.println(currentCar);
         }
+
+//        carService.remove(3);
+//        carService.add(new Car(0,"Kalina",23456,2));
+        for (Car currentCar : carService.findAll()) {
+            System.out.println(currentCar);
+        }
+
+
     }
 }

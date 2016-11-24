@@ -1,8 +1,6 @@
 package factories;
 
-import verify.Verifier;
-import dao.UsersDao;
-import service.UserService;
+import verify.CarVerifier;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -10,22 +8,19 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Properties;
 
-public class UserServiceFactory {
+public class CarVerifierFactory {
     private static final String PROPERTIES_FILE_NAME = "C:\\Курсы Java\\Progect\\DAO\\src\\main\\resources\\dao.properties";
-    private static UserServiceFactory instance = new UserServiceFactory();
-    private UserService userService;
-    private Verifier verifier;
+    private static CarVerifierFactory instance = new CarVerifierFactory();
+    private static CarVerifier carVerifier;
 
-    private UserServiceFactory() {
-        UsersDao usersDao = DaoFactory.getInstance().getDao();
-        Verifier verifier = VerifierFactory.getInstance().getVerifier();
+    private CarVerifierFactory() {
         Properties properties = new Properties();
         try {
             properties.load(new FileInputStream(PROPERTIES_FILE_NAME));
-            String userServiceClassName = properties.getProperty("userService.class");
-            Class userServiceClass = Class.forName(userServiceClassName);
-            Constructor constructor = userServiceClass.getConstructor(UsersDao.class, Verifier.class);
-            this.userService = (UserService) constructor.newInstance(usersDao, verifier);
+            String verifierClassName = properties.getProperty("carVerifier.class");
+            Class verifierClass = Class.forName(verifierClassName);
+            Constructor constructor = verifierClass.getConstructor();
+            this.carVerifier = (CarVerifier) constructor.newInstance();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InstantiationException e) {
@@ -41,11 +36,11 @@ public class UserServiceFactory {
         }
     }
 
-    public static UserServiceFactory getInstance() {
+    public static CarVerifierFactory getInstance() {
         return instance;
     }
 
-    public UserService getUserService() {
-        return userService;
+    public static CarVerifier getCarVerifier() {
+        return carVerifier;
     }
 }
